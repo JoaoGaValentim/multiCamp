@@ -104,6 +104,7 @@ class ClienteTabuada:
 
     def send_answer(self):
         try:
+            self.status_label.config(text="")
             self.answer = int(self.answer_entry.get())
             self.server_socket.sendall((str(self.answer) + "\n").encode())
             self.answer_entry.delete(0, END)
