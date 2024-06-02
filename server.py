@@ -192,12 +192,16 @@ class CampeonatoTabuada:
         for player in self.players:
             if player not in self.scores:
                 self.scores[player] = 0
+        self.save_scores()  # Salvar os scores iniciais
+
         self.start_label.pack_forget()
         self.player_entry.pack_forget()
         self.start_button.pack_forget()
         self.multi_label.pack_forget()
         self.multi_entry.pack_forget()
         self.create_widgets()
+
+        # Iniciar a conexão do socket após salvar os scores
         self.wait_for_client_connection()
 
     def create_widgets(self):
@@ -268,7 +272,7 @@ class CampeonatoTabuada:
         )
         self.skip_button.pack(side=LEFT)
 
-        self.leaderboard_button = Button(
+        self.leaderboard_button = self.leaderboard_button = Button(
             self.root,
             text="Quadro de Líderes",
             font=("Arial", int(self.screen_height * 0.025)),
