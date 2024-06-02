@@ -3,3 +3,4 @@ key.key
 settings.json
 .venv/
 .vscode
+.DS_Store
