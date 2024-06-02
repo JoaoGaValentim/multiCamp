@@ -42,7 +42,7 @@ class CampeonatoTabuada:
 
         # Configuração do socket
         self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.server_socket.bind(("127.0.0.1", 12345))
+        self.server_socket.bind((socket.gethostname(), 12345))
         self.server_socket.listen(5)
         self.client_socket = None
 

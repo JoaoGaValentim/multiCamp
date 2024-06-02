@@ -1,5 +1,6 @@
 import json
 import socket
+import time
 from tkinter import *
 from tkinter import messagebox
 import threading
@@ -67,7 +68,7 @@ class ClienteTabuada:
     def connect_to_server(self):
         try:
             self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            self.server_socket.connect(("127.0.0.1", 12345))
+            self.server_socket.connect((socket.gethostname(), 12345))
         except Exception as e:
             messagebox.showerror("Erro", f"Erro ao conectar ao servidor: {str(e)}")
             self.root.destroy()
@@ -94,8 +95,10 @@ class ClienteTabuada:
         teacher_response = self.question_data.get("_teacher_response", "")
         student_play = self.question_data.get("_student_play", "")
 
+        self.status_label.config(text="")
         if teacher_response:
             print(teacher_response)  # Manter o print para depuração
+            time.sleep(1)
             self.status_label.config(text=teacher_response)
 
         self.question_label.config(
